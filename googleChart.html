@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Google Chart Example</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        // Must delay chart init becuase of "fetch"
+        setTimeout(function () {
+            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.setOnLoadCallback(drawChart);
+        }, 1000)
+
+        // Get "Question" and "Text"
+        var formQuestion, pollQues;
+        var getPollQuestion = fetch('data/pollInformation.json')
+            .then((pollResponse) => {
+                return pollResponse.json();
+            })
+            .then((jsonPollQues) => {
+                // document.getElementById("pollQuestion").value = jsonPollQues.question;
+                pollQues = jsonPollQues.question;
+            });
+
+
+        // Get JSON Poll numbers
+        var yesResponse = '';
+        var myChartData = [];
+        var getPollData = fetch('data/totalResponses.json')
+            .then((response) => {
+                return response.json();
+            })
+            .then((myJson) => {
+                // Loop through json and push into table?
+                yesResponse = myJson.yes;
+                noResponse = myJson.no;
+                maybeResponse = myJson.maybe;
+            });
+
+        setTimeout(() => {
+            myChartData = [
+                ['Poll', 'Simple questions'],
+                ['Yes', yesResponse],
+                ['No', noResponse],
+                ['Maybe', maybeResponse]
+            ];
+            drawChart();
+        }, 1000)
+
+
+
+        // Google Charts STARTS
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable(myChartData);
+
+            var options = {
+                title: pollQues
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+
+    </script>
+</head>
+
+<body>
+    <p id="jsonFeed"></p>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>

@@ -18,19 +18,36 @@ if(isset($_POST['updatePollBtn'])){
 <p>NATvigADER Poll Dashboard</p>
 
 <form  method="post" action="dashboard.php">
-    <label for="html">Poll Question</label>
-    <input type="text" id="pollQuestion" name="pollQuestion" value=""><br>
-    <label for="html">Answer 1</label>
-    <input type="text" id="answer1" name="answer1" value=""><br>
-    <label for="html">Answer 2</label>
-    <input type="text" id="answer2" name="answer2" value=""><br>
-    <label for="html">Answer 3</label>
-    <input type="text" id="answer3" name="answer3" value="">
+    <label for="html">Poll Question</label><br>
+    <textarea id="pollQuestion" name="pollQuestion" value="">
+        
+    </textarea>
+    <br>
+    <br>
+    <input type="text" id="response1" name="response1" placeholder='Response 1' value="">
+    <br>
+    <br>
+    <input type="text" id="response2" name="response2" placeholder='Response 2' value="">
+    <br>
+    <br>
+    <input type="text" id="response3" name="response3" placeholder='Response 3' value="">
+    <br>
+    <br>
+    <input type="text" id="response4" name="response4" placeholder='Response 4' value="">
+    <br>
+    <br>
+    <input type="text" id="response5" name="response5" placeholder='Response 5' value="">
+    <br>
+    <br>
+    <input type="text" id="response6" name="response6" placeholder='Response 6' value="">
+    <br>
+    <br>
+    <input type="text" id="response7" name="response7" placeholder='Response 7' value="">
     <br> 
     <br>   
     <input type="submit" value="Submit" name="updatePollBtn"> 
 </form>  
 
-<script src='js/dashboard.js'></script>
+<!-- <script src='js/dashboard.js'></script> -->
 </body>
 </html>

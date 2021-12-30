@@ -1,75 +1,96 @@
 <?php
 
 function updatePoll(){
-    // $pollInfo= file_get_contents("data/pollInformation.json");
-    // $pollInfo = json_decode($pollInfo, true);
 
-    $pollArrayQA = array
+    $pollArray = array
     (
-      'question' => "Question goes here",
-      'answerOne' => "Answer numner one",
-      'answerTwo' => "Answer numner two",
-      'answerThree' => "Answer numner three",
+        array("Poll","..."),
+        array("respOne",0),
+        array("respTwo",0),
+        array("respThree",0),
+        array("respFour",0),
+        array("respFive",0),
+        array("respSix",0),
+        array("respSeven",0)
     );
 
     if($_POST["pollQuestion"]!=null){
-        $pollArrayQA['question'] = $_POST["pollQuestion"]; 
-    };
-    if($_POST["answer1"]!=null){
-        $pollArrayQA['answerOne'] = $_POST["answer1"]; 
-    };
-    if($_POST["answer2"]!=null){
-        $pollArrayQA['answerTwo'] = $_POST["answer2"]; 
-    };
-    if($_POST["answer3"]!=null){
-        $pollArrayQA['answerThree'] = $_POST["answer3"]; 
+        $pollArray[0][1] = $_POST["pollQuestion"]; 
     };
 
-    $newPollinfInfo = json_encode($pollArrayQA);
+    if($_POST["response1"]!=null){
+        $pollArray[1][0]=$_POST["response1"];
+    }else{
+        $pollArray[1][0]=null;
+    }
+
+    if($_POST["response2"]!=null){
+        $pollArray[2][0]=$_POST["response2"];
+    }else{
+        $pollArray[2][0]=null;
+    }
+
+    if($_POST["response3"]!=null){
+        $pollArray[3][0]=$_POST["response3"];
+    }else{
+        $pollArray[3][0]=null;
+    }
+
+    if($_POST["response4"]!=null){
+        $pollArray[4][0]=$_POST["response4"];
+    }else{
+        $pollArray[4][0]=null;
+    }
+
+    if($_POST["response5"]!=null){
+        $pollArray[5][0]=$_POST["response5"];
+    }else{
+        $pollArray[5][0]=null;
+    }
+
+    if($_POST["response6"]!=null){
+        $pollArray[6][0]=$_POST["response6"];
+    }else{
+        $pollArray[6][0]=null;
+    }
+
+    if($_POST["response7"]!=null){
+        $pollArray[7][0]=$_POST["response7"];
+    }else{
+        $pollArray[7][0]=null;
+    }
+
+    $newPollinfInfo = json_encode($pollArray);
 
     //write json to file
-    if (file_put_contents("data/pollInformation.json", $newPollinfInfo))
-    echo "New poll information submitted successfully.";
-    else 
-    echo "Oops! Error submitting new polling information...";
-    
+    $files = array('data/pollInformation.json', 'data/totalResponses.json');
+
+    foreach($files as $file){
+        if (file_put_contents($file, $newPollinfInfo))
+        echo "New poll information submitted successfully.";
+        else 
+        echo "Oops! Error submitting new polling information...";
+    }
 }
 
+
+
+
 function submitPollResponse(){
-    $data= file_get_contents("data/totalResponses.json");
-    // if($data==false){
-    //     fopen("data/totalResponses.json", "w");
-        
-    // }
-    $data = json_decode($data, true);
-    
-    $userResponse = array
-    // Keys must match index.php form input values?
-    (
-      'yes' => $data["yes"],
-      'no' => $data["no"],
-      'maybe' => $data["maybe"]
-    );
+    $pollData = file_get_contents("data/totalResponses.json");
+    $pollData = json_decode($pollData, true);
 
-    $response = $_POST["poll_response"];
-    if($response == "yes"){
-        $userResponse['yes'] = $userResponse['yes']+1;
-    };
-    if($response == "no"){
-        $userResponse['no'] = $userResponse['no']+1;
-    };
-    if($response == "maybe"){
-        $userResponse['maybe'] = $userResponse['maybe']+1;
-    };
+    for ($x = 0; $x <= count($pollData); $x++) {
+        if($_POST["poll_response"]==$pollData[$x][0]){
+            $pollData[$x][1]=$pollData[$x][1]+1;
+        }
+    }
 
-    $totalResponses = json_encode($userResponse);
+    $totalResponses = json_encode($pollData);
 
     //write json to file
     if (file_put_contents("data/totalResponses.json", $totalResponses))
     echo "Poll response submitted successfull.";
     else 
     echo "Oops! Error submitting response...";
-    
-} 
-
-
+}

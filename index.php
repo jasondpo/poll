@@ -31,25 +31,25 @@ if(isset($_POST['submitPollResponseBtn'])){
 <form action="index.php" method="post" name="pollForm" id="pollForm">
     
     <div id="pollResp1"><input type="radio"  name="poll_response" id="repo1" value="null">
-    <label for="html" id="repo1Label">Yes</label></div>
+    <label for="html" id="repo1Label"></label></div>
 
     <div id="pollResp2"><input type="radio" name="poll_response" id="repo2" value="null">
-    <label for="css" id="repo2Label">No</label></div>
+    <label for="css" id="repo2Label"></label></div>
 
     <div id="pollResp3"><input type="radio"  name="poll_response" id="repo3" value="null">
-    <label for="javascript" id="repo3Label">Maybe</label></div>
+    <label for="javascript" id="repo3Label"></label></div>
 
     <div id="pollResp4"><input type="radio"  name="poll_response" id="repo4" value="null">
-    <label for="javascript" id="repo4Label">Maybe</label></div>
+    <label for="javascript" id="repo4Label"></label></div>
 
     <div id="pollResp5"><input type="radio"  name="poll_response" id="repo5" value="null">
-    <label for="javascript" id="repo5Label">Maybe</label></div>
+    <label for="javascript" id="repo5Label"></label></div>
 
     <div id="pollResp6"><input type="radio"  name="poll_response" id="repo6" value="null">
-    <label for="javascript" id="repo6Label">Maybe</label></div>
+    <label for="javascript" id="repo6Label"></label></div>
 
     <div id="pollResp7"><input type="radio"  name="poll_response" id="repo7" value="null">
-    <label for="javascript" id="repo7Label">Maybe</label></div>
+    <label for="javascript" id="repo7Label"></label></div>
 
     <br> 
     <br>   

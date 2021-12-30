@@ -12,12 +12,18 @@ if(isset($_POST['updatePollBtn'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poll: Dashboard</title>
+
+    <style>
+        #pollForm{
+            max-width: 400px;
+        }
+    </style>
 </head>
 <body>
 
 <p>NATvigADER Poll Dashboard</p>
 
-<form  method="post" action="dashboard.php">
+<form id="pollForm" method="post" action="dashboard.php">
     <label for="html">Poll Question</label><br>
     <textarea id="pollQuestion" name="pollQuestion" value="">
         
@@ -47,7 +53,10 @@ if(isset($_POST['updatePollBtn'])){
     <br>   
     <input type="submit" value="Submit" name="updatePollBtn"> 
 </form>  
-
+<script src='ckeditor/ckeditor.js'></script>
+<script>
+    CKEDITOR.replace('pollQuestion');
+</script>
 <!-- <script src='js/dashboard.js'></script> -->
 </body>
 </html>

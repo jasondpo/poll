@@ -19,10 +19,11 @@
 
         // Google Charts STARTS
         function drawChart() {
+            var strippedHtml = totalData[0][1].replace(/<[^>]+>/g, '');
             var data = google.visualization.arrayToDataTable(myChartData);
 
             var options = {
-                title: totalData[0][1]
+                title: strippedHtml
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));

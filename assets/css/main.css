@@ -1,0 +1,45 @@
+/*--------------------------------------------------------------
+DIRECTORY
+    
+.AA Global
+
+.01 Header
+
+.02 Grids
+
+.03 Footer
+
+.04 Search
+
+.05 Content
+
+.XX RESPONSIVE 
+--------------------------------------------------------------*/	
+/*--------------------------------------------------------------
+.AA GLOBAL STARTS
+--------------------------------------------------------------*/
+
+:root {
+    --variableOne: #f90;
+    --variableTwo: #f30;
+}
+
+#pollForm{
+    max-width: 400px;
+}
+.pollResponse{
+    width: 400px;
+    box-sizing: border-box;
+    height: 30px;
+    opacity: .4;
+    color: #888;  
+}
+.pollResponse:hover{
+    opacity: 1;
+}
+.pollResponseActive{
+    opacity: 1;
+}
+/*--------------------------------------------------------------
+.01 Header
+--------------------------------------------------------------*/
